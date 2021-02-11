@@ -56,4 +56,4 @@ Running @ 1 billion guesses a second: 10^9 / 10^26 seconds
 
 ## Topic: Infrastructure
 
-See analyst/README and collector/README
+See [analyst/README.md](analyst/README.md) and [collector/README.md](collector/README.md)
