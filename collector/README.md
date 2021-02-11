@@ -8,3 +8,13 @@ Unimplemented: the sink :( this could be used to daisy chain collectors
 
 To see a list of all the possible commands: ./collector -h 
 
+## Example usage
+The following will create a socket named socket-collector-ping (the -cping argument) which will listen for incoming data streams to the socket and request a service provider named 'average' to compute the collected results every 20 seconds with payment
+```
+./collector -n100 -cping -saverage -t20
+```
+Any telemetry data can be streamed to a running collector by piping data into './collector-input socket-collector-<COLLECTOR_NAME>'. The following will pipe the ping response time to google into the collector:
+```
+ping -c 5 -q google.com | grep -oP 'time \d+' | ./collector-input socket-collector-ping
+```
+
