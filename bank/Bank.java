@@ -3,7 +3,7 @@
  * @author Andrew Briscoe (21332512)
  * @date 2015-05-20
  */
-import sun.security.tools.KeyStoreUtil;
+// import sun.security.tools.KeyStoreUtil;
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -191,7 +191,7 @@ public class Bank {
 
 		byte[] decryptedtext = null;
 		try {
-			KeyStore keystore = KeyStore.getInstance("JKS");
+			KeyStore keystore = KeyStore.getInstance(KeyStore.getDefaultType());
 			keystore.load(new FileInputStream("bank.keystore"), "changeit".toCharArray());
 			PrivateKey key = (PrivateKey) keystore.getKey("bank-certificate","changeit".toCharArray());
 			final Cipher cipher = Cipher.getInstance("RSA");

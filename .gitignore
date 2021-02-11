@@ -2,4 +2,10 @@
 **/keystore/**
 **/truststore/**
 **/certs/**
-
+**/*.class
+**.keystore
+**.truststore
+**/coins/**
+collector/collector
+collector/collector-input
+**.pem

@@ -1,4 +1,5 @@
-all: Bank.java Connection.java SocketUtil.java
+all: build cert
+build: Bank.java Connection.java SocketUtil.java
 	javac *.java
 cert:
 	# type "changeit" a heap of times

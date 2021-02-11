@@ -659,17 +659,20 @@ int decryptPayload(unsigned char *ciphertext, int ciphertext_length, enc_head *h
 	int plaintext_len;
 	if(!(ctx = EVP_CIPHER_CTX_new())) {
 		ERR_print_errors_fp(stderr);
+		printf("cant make new cipher ctx\n");
 		return -1;			
 	}
-
 	if (EVP_DecryptInit_ex(ctx,EVP_aes_256_cbc(),NULL, head->sk, head->iv)!=1){
 		ERR_print_errors_fp(stderr);
+		printf("unable to set the init cipher ctx\n");
 		return -1;
 	}
 	if (EVP_DecryptUpdate(ctx,cleartext, &len, ciphertext, ciphertext_length)!=1){
 		ERR_print_errors_fp(stderr);
+		printf("Unable to run decryption\n");
 		return -1;
 	}
+	printf("%s",cleartext);
 	if(EVP_DecryptFinal_ex(ctx, cleartext + len, &len)){
 		ERR_print_errors_fp(stderr);
 		return -1;
@@ -853,7 +856,7 @@ int sendData(connection *c, const char *serviceProvider, unsigned char *buffer,i
 	int i = (int) headbuf[0];
 	unsigned char responsebuf[i];
 	
-	unsigned char decryptedtext[COLLECT_BUFFER_SIZE]; // I'm sorry I have no idea why the decryptedtext needs to be so long :( but it fixes the seg fault sometimes
+	unsigned char* decryptedtext[COLLECT_BUFFER_SIZE]; // I'm sorry I have no idea why the decryptedtext needs to be so long :( but it fixes the seg fault sometimes
 	int decryptedtext_size;
 
 	switch (headbuf[1]){
@@ -863,9 +866,7 @@ int sendData(connection *c, const char *serviceProvider, unsigned char *buffer,i
 				perror("Error reading response from analyst");
 				break;
 			}
- 			decryptedtext_size = decryptPayload(responsebuf,i,encHead,decryptedtext);
-			decryptedtext[decryptedtext_size] = '\0';
-
+			decryptedtext_size = decryptPayload(responsebuf,i,encHead,decryptedtext);
 			printf("\n\n:::::::RESULT:::::::\n");
 			printf("%s\n",decryptedtext);
 			printf(":::::END RESULT:::::\n\n");

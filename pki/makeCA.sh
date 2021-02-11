@@ -8,13 +8,13 @@
 # and distribute them, and then add them into the truststore of the bank
 # One liner: http://stackoverflow.com/questions/59895/can-a-bash-script-tell-what-directory-its-stored-in
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-rm -rf $DIR/../bank/private 2> /dev/null
-rm -rf $DIR/../bank/keystore 2> /dev/null
-rm -rf $DIR/../bank/truststore 2> /dev/null
-rm -rf $DIR/../collector/certs 2> /dev/null
-rm -rf $DIR/../collector/truststore 2> /dev/null
-rm -rf $DIR/../analyst/private 2> /dev/null
-rm -rf $DIR/../analyst/truststore 2> /dev/null
+#rm -rf $DIR/../bank/private 2> /dev/null
+#rm -rf $DIR/../bank/keystore 2> /dev/null
+#rm -rf $DIR/../bank/truststore 2> /dev/null
+#rm -rf $DIR/../collector/certs 2> /dev/null
+#rm -rf $DIR/../collector/truststore 2> /dev/null
+#rm -rf $DIR/../analyst/private 2> /dev/null
+#rm -rf $DIR/../analyst/truststore 2> /dev/null
 mkdir -p $DIR/../bank/private
 mkdir -p $DIR/../bank/keystore
 mkdir -p $DIR/../bank/truststore

@@ -22,8 +22,8 @@ public class AverageAnalyser implements IAnalyser {
         }
 
         AverageAnalyser(){
-
-        }
+     
+     	}
 
         AverageAnalyser(String name){
             this.serviceName = name;
@@ -42,10 +42,9 @@ public class AverageAnalyser implements IAnalyser {
                         j += Integer.parseInt(line.replaceAll("[\\D]",""));
 
                     }
-                    System.out.println(line);
                 }
             } catch (Exception ignored){
-
+		System.out.println("Exception thrown here");
             }
             System.out.println("sum: " + j + ", n: " + i);
             byte[] result = null;

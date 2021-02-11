@@ -1,4 +1,5 @@
-all: Director.java Connection.java SocketUtil.java
+all: build
+build: Director.java Connection.java SocketUtil.java
 	javac *.java
 cert:
 	openssl genrsa -out director.key.pem 2048

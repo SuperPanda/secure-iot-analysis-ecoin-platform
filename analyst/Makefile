@@ -1,4 +1,5 @@
-all: Analyst.java Connection.java SocketUtil.java
+all: build key
+build: Analyst.java Connection.java SocketUtil.java
 	javac *.java
 key: truststore/bank.cert.pem
 	openssl pkcs12 -export -in private/analyst.cert.pem -inkey private/analyst.key.pem -out private/analyst.p12 -name analyst-certificate
