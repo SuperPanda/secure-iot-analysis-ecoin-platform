@@ -1,6 +1,5 @@
-I write this read me because it is possible I will be ~dreadfully~ tired and do a horrible presentation
-
-~~ Topic: Security ~~
+# Secure IoT analysis ecoin platform (Proof of concept)
+## Topic: Security
 
 Bank must require connections are from authorised clients only by requiring there key to be stored in the banks truststore
 
@@ -32,21 +31,21 @@ Collector stores bad ecoins in a seperate directory if it failed, so maybe the b
 situation where the director kept faking service operation errors
 
 
-~~ Topic: Weakness ~~
+## Topic: Weakness
 
 Director can in effect destroy ecoins from the collector, however, the director still cannot 'misuse', 'reuse' or 'duplicate' ecoins.
 
-~~ Topic: Design rationale ~~
-
+## Topic: Design rationale
+### Bank storage requirements
 Bank storage requirements with 10^9 devices with 1000 ecoins allocated:
 Assume 10^9 devices with 10^3 keys = 10^12 keys in use
 10^12 * 256 bit key = approx. 2.5*10^14 bits
 250Tbits at max capacity required to be held at a given time by the bank (feasible) for the ledger
-
+### IoT Storage Requirements
 Storage requirement for microcomputer:
-1000 keys x 256bit = 32bytes for microcomputer (feasible)
+1000 keys x 256bit = 32 bytes for microcomputer (feasible)
 
-ecoin guessability:
+### ecoin guessability
 2^256 is about 10^64
 with 10^12 keys in use...
 10^12 / 10^64 = 1/10^52
@@ -55,6 +54,6 @@ including birthday attack (half the bit size) 10^26
 Running @ 1 billion guesses a second: 10^9 / 10^26 seconds
 10^15 seconds = 3 years to guess 1 ecent @ a billion guesses a second :) (if my rough maths works out)
 
-~~ Topic: Infrastructure ~~
+## Topic: Infrastructure
 
 See analyst/README and collector/README
