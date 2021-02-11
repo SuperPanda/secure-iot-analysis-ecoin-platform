@@ -1,4 +1,17 @@
 # Secure IoT analysis ecoin platform (Proof of concept)
+## Overview
+* The IoT client (collector) generates local sockets to act as sinks for telemetry sources and sends data and payment securely to a service provider to analyse the data through an untrusted intermediary. (Written in C)
+* The director performs service discovery and relays encrypted messages between the service provider and the iot client
+* The analyst is a service that performs computation on behalf of the IoT client for a fee
+* The bank provisions ecoins to iot devices, so the iot devices can pay the service provider for computation
+* The bank maintains a ledger of allocated coins, and allows the service providers to deposit and verify coins
+* Bank needs 250 Terabits of storage for 9 billion devices with 1000 ecoins each
+* IoT device uses 32kb to store 1000 ecoins
+* Takes 3 years to steal 0.01 ecoins (after considering birthday attacks) by guessing a billion times a second (it is not financially feasible to steal)
+* Director is unable to 'misuse', 'reuse' or 'duplicate' ecoins
+* Coins act as both an authorisation token, and as a symmetric key
+* As far as I remember: the collector generates a symmetric key using a coin and an initialisation vector which is encrypted using the banks public key and uses the symmetric key for encrypting the service data... will update soon
+
 ## Topic: Security
 
 Bank must require connections are from authorised clients only by requiring there key to be stored in the banks truststore
